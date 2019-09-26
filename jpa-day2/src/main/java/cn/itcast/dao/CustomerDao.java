@@ -1,10 +1,7 @@
 package cn.itcast.dao;
 
 import cn.itcast.domain.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+
 
 import java.util.List;
 
@@ -55,7 +52,7 @@ public interface CustomerDao extends JpaRepository<Customer,Long> ,JpaSpecificat
      *      * 当前执行的是一个更新操作
      *
      */
-    @Query(value = " update Customer set custName = ?2 where custId = ?1 ")
+    @Query(value = " update Customer set custName = ?2 where custId = ?1 ", nativeQuery = )
     @Modifying
     public void updateCustomer(long custId,String custName);
 
